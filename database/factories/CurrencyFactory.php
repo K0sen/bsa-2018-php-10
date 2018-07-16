@@ -13,12 +13,9 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(App\Entity\User::class, function (Faker $faker) {
+$factory->define(App\Entity\Currency::class, function (Faker $faker) {
     return [
-        'name' => 'admin',
-        'email' => 'admin@g.g',
-        'is_admin' => $faker->boolean(100),
-        'password' => bcrypt('admin'),
-        'remember_token' => str_random(10),
+        'name' => $faker->unique()->currencyCode,
+        'rate' => $faker->randomFloat(2, 0.1, 7000),
     ];
 });

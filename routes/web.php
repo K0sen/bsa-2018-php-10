@@ -12,5 +12,9 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('main');
 });
+
+Auth::routes();
+
+Route::get('/currencies', 'Currency\CurrencyController@index')->name('currencies');
