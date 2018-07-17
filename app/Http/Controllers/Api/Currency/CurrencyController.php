@@ -6,6 +6,7 @@ use App\Entity\Currency;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RateCurrencyRequest;
 use App\Services\CurrencyRepository;
+use Illuminate\Http\JsonResponse;
 
 class CurrencyController extends Controller
 {
@@ -21,13 +22,16 @@ class CurrencyController extends Controller
 
     /**
      * @param RateCurrencyRequest $request
-     * @param Currency            $currency
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @param int                 $id
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function updateRate(RateCurrencyRequest $request, Currency $currency)
+    public function updateRate(RateCurrencyRequest $request, $id): JsonResponse
     {
-        var_dump($currency);
-        die();
-        return view('currency.currency-list');
+        $saved = $this->currencyRepository->updateRate($request, $id);
+        if (!$saved) {
+            return response()->json(['Rate was not updated'], 404);
+        }
+
+        return response()->json(['Rate was successfully updated'], 202);
     }
 }

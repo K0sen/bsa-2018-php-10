@@ -10,7 +10,7 @@
     </thead>
     <tbody>
         @foreach ($currencies as $key => $currency)
-            @include('currency.pieces.currency-row', ['currency' => $currency, 'row' => $key + 1])
+            @include('currency.pieces.currency-row', ['currency' => $currency])
         @endforeach
     </tbody>
 </table>
