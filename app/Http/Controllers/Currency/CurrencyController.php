@@ -50,12 +50,12 @@ class CurrencyController extends Controller
         }
 
         $newCurrency = $this->currencyRepository->updateRate($request, $id);
-//        $users = $this->userRepository->findAll();
-//        foreach ($users as $user) {
-//            SendRateChangedEmail::dispatch(
-//                new RateChanged($user, $currency->name, $currency->rate, $newCurrency->rate)
-//            )->onQueue('notification');
-//        }
+        $users = $this->userRepository->findAll();
+        foreach ($users as $user) {
+            SendRateChangedEmail::dispatch(
+                new RateChanged($user, $currency->name, $currency->rate, $newCurrency->rate)
+            )->onQueue('notification');
+        }
 
         return redirect()->route('currencies');
     }
