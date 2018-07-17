@@ -3,9 +3,9 @@
     <tr>
         <th scope="col">Name</th>
         <th scope="col">Rate</th>
-        {{--@can ('update_rate', $currencies[0])--}}
+        @can ('update_rate', $currencies[0])
         <th scope="col">Edit rate</th>
-        {{--@endcan--}}
+        @endcan
     </tr>
     </thead>
     <tbody>

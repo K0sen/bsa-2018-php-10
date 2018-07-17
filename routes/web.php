@@ -18,3 +18,5 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/currencies', 'Currency\CurrencyController@index')->name('currencies');
+Route::put('/api/currencies/{id}/rate','Currency\CurrencyController@updateRate')
+    ->name('api_currency_rate_update');

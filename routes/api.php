@@ -16,4 +16,7 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::patch('/currencies/{id}/rate', 'Api\Currency\CurrencyController@updateRate')->name('api_currency_rate_update');
+
+//Route::put('currencies/{id}/rate', 'Currency\CurrencyController@updateRate')
+//    ->middleware('auth')
+//    ->name('api_currency_rate_update');

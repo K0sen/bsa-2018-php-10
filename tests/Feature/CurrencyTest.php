@@ -4,7 +4,7 @@ namespace Tests\Feature;
 
 use App\Entity\Currency;
 use App\Mail\RateChanged;
-use App\User;
+use App\Entity\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Mail;
 use Tests\TestCase;
@@ -35,6 +35,7 @@ class CurrencyTest extends TestCase
         $response = $this->actingAs($user)->json('PUT', '/api/currencies/1/rate', [
             "rate" => 2
         ]);
+        dump($response);
 
         $response->assertStatus(200);
 

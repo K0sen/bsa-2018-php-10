@@ -1,6 +1,6 @@
-{{--@can ('update_rate', $currency)--}}
+@can ('update_rate', $currency)
 <form role="form" method="POST"
-      action="{{ route('api_currency_rate_update', $currency->id) }}"
+      action="{{ route('api_currency_rate_update', ['id' => $currency->id]) }}"
       class="d-inline-block currency-rate-form">
     {{ csrf_field() }}
     {{ method_field('PUT') }}
@@ -17,4 +17,4 @@
         <i class="fas fa-edit"></i> Update
     </button>
 </form>
-{{--@endcan--}}
+@endcan

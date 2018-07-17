@@ -76,25 +76,25 @@ module.exports = __webpack_require__(45);
 /***/ 45:
 /***/ (function(module, exports) {
 
-$(document).ready(function () {
-    $('.currency-rate-form').on('submit', function (e) {
-        e.preventDefault();
-
-        var url = e.currentTarget.action;
-        var value = $(e.currentTarget).find('#rate').val();
-        $.ajax({
-            url: url,
-            type: 'PATCH',
-            data: { rate: value },
-            success: function success(result) {
-                window.location.replace(window.location.origin + "/currencies");
-            },
-            error: function error(_error) {
-                alert(_error.responseJSON.message);
-            }
-        });
-    });
-});
+// $(document).ready(function () {
+//     $('.currency-rate-form').on('submit', function (e) {
+//         e.preventDefault();
+//
+//         var url = e.currentTarget.action;
+//         var value = $(e.currentTarget).find('#rate').val();
+//         $.ajax({
+//             url: url,
+//             type: 'PATCH',
+//             data: { rate: value },
+//             success: function success(result) {
+//                 window.location.replace(window.location.origin + "/currencies");
+//             },
+//             error: function error(_error) {
+//                 alert(_error.responseJSON.message);
+//             }
+//         });
+//     });
+// });
 
 /***/ })
 

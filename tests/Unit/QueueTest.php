@@ -4,7 +4,7 @@ namespace Tests\Feature;
 
 use App\Entity\Currency;
 use App\Jobs\SendRateChangedEmail;
-use App\User;
+use App\Entity\User;
 use Illuminate\Support\Facades\Queue;
 use Tests\TestCase;
 

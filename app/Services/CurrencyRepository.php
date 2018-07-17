@@ -17,16 +17,25 @@ class CurrencyRepository
     }
 
     /**
-     * @param RateCurrencyRequest $request
-     * @param int                 $id
-     * @return bool
-     * @throws \Illuminate\Database\Eloquent\MassAssignmentException
+     * @param $id
+     * @return Currency|null
      */
-    public function updateRate(RateCurrencyRequest $request, $id): bool
+    public function findById($id): ?Currency
     {
-        $currency = Currency::find($id);
-        $currency->rate = $request->rate;
+        return Currency::find($id);
+    }
 
-        return $currency->save();
+    /**
+     * @param RateCurrencyRequest $request
+     * @param                     $id
+     * @return Currency
+     */
+    public function updateRate(RateCurrencyRequest $request, $id): Currency
+    {
+        $currency = $this->findById($id);
+        $currency->rate = $request->rate;
+        $currency->save();
+
+        return $currency;
     }
 }

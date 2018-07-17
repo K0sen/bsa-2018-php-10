@@ -13,11 +13,11 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(App\Entity\User::class, function (Faker $faker) {
+$factory->define(App\Entity\User::class, function (Faker $faker, array $attr) {
     return [
-        'name' => 'admin',
-        'email' => 'admin@g.g',
-        'is_admin' => $faker->boolean(100),
+        'name' => $faker->userName,
+        'email' =>  $faker->unique()->safeEmail,
+        'is_admin' => $attr['is_admin'],
         'password' => bcrypt('admin'),
         'remember_token' => str_random(10),
     ];

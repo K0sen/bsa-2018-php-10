@@ -11,6 +11,6 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-         factory(App\Entity\User::class, 1)->create();
+         factory(App\Entity\User::class, 1)->create(['is_admin' => true]);
     }
 }

@@ -4,12 +4,12 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
+    <div>
         <h1 class="text-center">Currency market (Queue Homework)</h1>
         @if (count($currencies) > 0)
             @include('currency.pieces.currency-table', ['currencies' => $currencies])
         @else
-            <strong>No currencies</strong>
+            <p class="text-center">No currencies</p>
         @endif
     </div>
 </div>
