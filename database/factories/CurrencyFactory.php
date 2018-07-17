@@ -13,9 +13,9 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(App\Entity\Currency::class, function (Faker $faker) {
+$factory->define(App\Entity\Currency::class, function (Faker $faker, array $attr) {
     return [
         'name' => $faker->unique()->currencyCode,
-        'rate' => $faker->randomFloat(2, 0.1, 7000),
+        'rate' => $attr['rate'] ?? $faker->randomFloat(2, 0.1, 7000),
     ];
 });
