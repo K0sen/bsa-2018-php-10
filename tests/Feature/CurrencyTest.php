@@ -35,7 +35,6 @@ class CurrencyTest extends TestCase
         $response = $this->actingAs($user)->json('PUT', '/api/currencies/1/rate', [
             "rate" => 2
         ]);
-        dump($response);
 
         $response->assertStatus(200);
 
