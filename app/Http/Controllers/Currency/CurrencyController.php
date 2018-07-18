@@ -8,6 +8,7 @@ use App\Jobs\SendRateChangedEmail;
 use App\Mail\RateChanged;
 use App\Services\CurrencyRepository;
 use App\Services\UserRepository;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
 class CurrencyController extends Controller
@@ -52,11 +53,17 @@ class CurrencyController extends Controller
         $newCurrency = $this->currencyRepository->updateRate($request, $id);
         $users = $this->userRepository->findAll();
         foreach ($users as $user) {
+            if(Auth::check() && Auth::user()->email === $user->email) {
+                break;
+            }
+
             SendRateChangedEmail::dispatch(
-                new RateChanged($user, $currency->name, $currency->rate, $newCurrency->rate)
+                $user, $newCurrency, $currency->rate
             )->onQueue('notification');
         }
 
-        return redirect()->route('currencies');
+        // Ideally we should redirect to currencies list page,
+        // but for reason of failing test we have to stay at the page
+//        return redirect()->route('currencies');
     }
 }

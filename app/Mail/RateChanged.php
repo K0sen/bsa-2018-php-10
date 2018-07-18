@@ -25,7 +25,7 @@ class RateChanged extends Mailable
      * @param float $oldRate
      * @param float $newRate
      */
-    public function __construct(User $userName, $currencyName, float $oldRate, float $newRate)
+    public function __construct($userName, $currencyName, float $oldRate, float $newRate)
     {
         $this->userName = $userName;
         $this->currencyName = $currencyName;
